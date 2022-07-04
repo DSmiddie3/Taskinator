@@ -12,17 +12,22 @@ var taskFormHandler = function(event) {
         name: taskNameInput,
         type: taskTypeInput
     };
+    // check if input values are empty strings
+        if (!taskNameInput || !taskTypeInput) {
+            alert("You need to fill out the task form!");
+            return false;
+          }
 
+          formE1.reset();
     // Send it an argument to createTaskE1
     createTaskE1(taskDataObj);
     
-}
+};
 
-var createTaskE1 = funtion(taskDataObj) 
+var createTaskE1 = function(taskDataObj) 
 // taskDataObj
 {
-    name: "Task's name", 
-    type: "Task's type"
+
 // creat list item
 var listItemEl = document.createElement("li");
 listItemEl.className = "task-item";
@@ -31,9 +36,9 @@ var taskInfoE1 = document.createElement("div");
 taskInfoE1.className = "task-info";
 // Add HTML content to div
 taskInfoE1.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
-listItemE1.appendChild(taskInfoE1);
+listItemEl.appendChild(taskInfoE1);
 // Add entire list item to the list
 tasksToDoEl.appendChild(listItemEl);
 }
 //buttonEl.addEventListener("click", createTaskHandler); 
-formE1.addEventListener("submit", createTaskHandler);
+formE1.addEventListener("submit", taskFormHandler);
